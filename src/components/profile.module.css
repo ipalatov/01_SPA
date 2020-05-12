@@ -1,0 +1,15 @@
+.content {
+	grid-area: content;
+	background: thistle;
+	text-align: center;
+}
+
+.content img {
+	display: block;
+	width: 50%;
+	margin: 10px auto;
+}
+
+.item {
+	color: darkolivegreen;
+}

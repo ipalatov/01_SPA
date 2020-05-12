@@ -1,0 +1,11 @@
+
+.header {
+    grid-area: head;
+    background: springgreen;
+  }
+  
+  .header img {
+    width: 100px;
+    margin: 10px;
+  }
+  

@@ -1,0 +1,10 @@
+.navig {
+    grid-area: nav;
+    background: steelblue;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .item {
+    color:white;
+  }

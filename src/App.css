@@ -8,31 +8,3 @@
   grid-template-rows: 120px 1fr;
   grid-template-columns: 1fr 8fr;
 }
-
-.header {
-  grid-area: head;
-  background: springgreen;
-}
-
-.app_wrapper img {
-  width: 100px;
-  margin: 10px;
-}
-
-.navig {
-  grid-area: nav;
-  background: steelblue;
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.content {
-  grid-area: content;
-  background: thistle;
-  text-align: center;
-}
-.content img {
-  display: block;
-  width: 50%;
-  margin: 10px auto;
-}
