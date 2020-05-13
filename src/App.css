@@ -8,3 +8,15 @@
   grid-template-rows: 120px 1fr;
   grid-template-columns: 1fr 8fr;
 }
+
+.app_wrapper__content {
+	grid-area: content;
+	background: rgb(118, 216, 159);
+	text-align: left;
+}
+
+.app_wrapper__content img {
+	display: block;
+	width: 50%;
+	margin: 10px auto;
+}

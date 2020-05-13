@@ -1,0 +1,25 @@
+.dialogs {
+    display: grid;
+    grid-template-areas:
+        'items messages';
+    grid-template-columns: 2fr 8fr;
+}
+
+.dialog_items {
+    grid-area: items;
+    padding: 10px;
+}
+
+.item {}
+
+.item.active {
+    color: gold;
+}
+
+.dialog_messages {
+    grid-area: messages;
+    padding: 10px;
+
+}
+
+.message {}
