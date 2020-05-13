@@ -1,61 +1,45 @@
 import React from 'react';
 import s from './dialogs.module.css';
-import { NavLink } from 'react-router-dom';
+import Message from './Message/message';
+import DialogItem from './dialogItem/dialogItem';
+
+let dialogsData = [
+    { id: 1, name: 'Ivan' },
+    { id: 2, name: 'Sergey' },
+    { id: 3, name: 'Tatyana' },
+    { id: 4, name: 'Nastyusha' },
+    { id: 5, name: 'Artem' },
+    { id: 6, name: 'Vadim' }
+];
+
+let messagesData = [
+    { id: 1, message: 'Ivan message' },
+    { id: 2, message: 'Sergey message' },
+    { id: 3, message: 'Tatyana message' },
+    { id: 4, message: 'Nastyusha message' },
+    { id: 5, message: 'Artem message' },
+    { id: 6, message: 'Vadim message' }
+];
 
 
-const Dialogs = () => {
+const Dialogs = (props) => {
+    
+    let dialogsElements = props.dialogsData
+        .map(item => <DialogItem name={item.name} id={item.id} />);
+    let messagesElements = props.messagesData
+        .map(item => <Message message={item.message} id={item.id} />);
+
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialog_items}>
-                <div className={s.item + ' ' + s.active}>
-                    <NavLink to='/dialogs/1'>Ivan</NavLink>
-                </div>
-                <div className={s.item}>
-                    <NavLink to='/dialogs/2'>Sergey</NavLink>
-                </div>
-                <div className={s.item}>
-                    <NavLink to='/dialogs/3'>Tatyana</NavLink>
-                </div>
-                <div className={s.item}>
-                    <NavLink to='/dialogs/4'>Nastyusha</NavLink>
-                </div>
-                <div className={s.item}>
-                    <NavLink to='/dialogs/5'>Artem</NavLink>
-                </div>
-                <div className={s.item}>
-                    <NavLink to='/dialogs/6'>Vadim</NavLink>
-                </div>
+                {dialogsElements}
+
             </div>
             <div className={s.dialog_messages}>
-                <div className={s.message}>
-                    Ivan message
-                </div>
-                <div className={s.message}>
-                    Sergey message
-                </div>
-                <div className={s.message}>
-                    Tatyana message
-                </div>
-                <div className={s.message}>
-                    Nastyusha message
-                </div>
-                <div className={s.message}>
-                    Artem message
-                </div>
-                <div className={s.message}>
-                    Vadim message
-                </div>
-
-
+                {messagesElements}
             </div>
-
-
-
         </div>
-
-
-
-
     )
 }
 

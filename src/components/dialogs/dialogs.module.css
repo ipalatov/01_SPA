@@ -7,10 +7,22 @@
 
 .dialog_items {
     grid-area: items;
-    padding: 10px;
+    padding: 20px;
 }
 
 .item {}
+
+.item a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: darkolivegreen;
+    text-decoration: none;
+}
+
+.item a:hover {
+    color: rgba(85, 107, 47, 0.5);
+    text-decoration: none;
+}
 
 .item.active {
     color: gold;

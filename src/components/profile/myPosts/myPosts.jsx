@@ -2,19 +2,23 @@ import React from 'react';
 import s from './myPosts.module.css';
 import Post from './post/post'
 
-const MyPosts = () => {
+
+
+const MyPosts = (props) => {
+    
+    const postData = props.postData;
+
+    let postsElements = postData.map(item => <Post id={item.id} message={item.message} liked={item.liked} />);
 
     return (
         <div className={s.myPosts}>
             <h3>My posts:</h3>
             <div className={s.newPost}>
-                <textarea placeholder='new post'></textarea>
-                <button className={s.newPost__button}>Add post</button>
+                <div><textarea placeholder='new post'></textarea></div>
+                <div><button className={s.newPost__button}>Add post</button></div>
             </div>
-            <div className='posts'>
-                <Post message='Hello, World! How are you?' liked={15} />
-                <Post message='Its my first post!' liked={20} />
-                
+            <div className={s.posts}>
+                {postsElements}
             </div>
         </div>
     )

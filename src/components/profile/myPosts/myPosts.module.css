@@ -1,13 +1,21 @@
+.myPosts {
+	padding: 10px;
+}
+
 .myPosts h3 {
 	font-weight: 700;
 	display: inline;
 }
 
 .newPost textarea {
-	display: inline;	
+	display: inline;
 }
 
 .newPost__button {
 	display: inline;
 
+}
+
+.posts {
+	margin-top: 10px;
 }
