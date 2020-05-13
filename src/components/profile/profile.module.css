@@ -1,7 +1,7 @@
 .content {
 	grid-area: content;
-	background: thistle;
-	text-align: center;
+	background: paleturquoise;
+	text-align: left;
 }
 
 .content img {

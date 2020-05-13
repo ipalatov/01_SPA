@@ -1,0 +1,11 @@
+
+.post {
+	color: darkolivegreen;
+}
+
+.post img {
+	display: inline-block; 
+	width: 50px;
+	border-radius: 10px;
+
+}
