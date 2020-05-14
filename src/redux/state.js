@@ -1,4 +1,3 @@
-import rerenderTree from "../render";
 
 let state = {
 
@@ -9,7 +8,7 @@ let state = {
             { id: 3, message: 'I learn React!', liked: 200 },
             { id: 4, message: 'This is works!', liked: 2000 }
         ],
-        currentText:'Type here',
+        currentText: 'Type here',
     },
 
     dialogsPage: {
@@ -56,5 +55,12 @@ export const updatePostMessage = (postMessage) => {
     rerenderTree(state);
 }
 
+let rerenderTree;
+
+// pattern 'observer' start
+export const subscribe = (observer) => {
+    rerenderTree = observer;
+} 
+// pattern 'observer' end
 
 export default state;
