@@ -1,0 +1,26 @@
+.friends_block {
+    color: cornflowerblue;
+}
+
+.friends_block__void {
+    height: 100px;
+}
+
+.friends_block__header {
+    text-align: center;
+}
+
+.friends_block__list {
+    font-size: 0.9rem;
+}
+.friends_block__friend {
+    display: inline-block;
+    text-align: center;
+    width: 51px;
+}
+.friends_block__friend img {
+
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
