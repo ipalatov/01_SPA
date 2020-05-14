@@ -5,7 +5,7 @@ import DialogItem from './dialogItem/dialogItem';
 
 
 const Dialogs = (props) => {
-    
+
     let dialogsElements = props.state.dialogsData
         .map(item => <DialogItem name={item.name} id={item.id} img={item.img} />);
     let messagesElements = props.state.messagesData
@@ -21,6 +21,20 @@ const Dialogs = (props) => {
             <div className={s.dialog_messages}>
                 {messagesElements}
             </div>
+            <div className={s.add_new_message}>
+                <div className={s.add_new_message__block_textarea} >
+                    <textarea
+                        className={s.add_new_message__textarea}
+                        placeholder='new message'>
+
+                    </textarea>
+                </div>
+                <div className={s.add_new_message__block_btn}>
+                    <button className={s.add_new_message__button}>Send message</button>
+                </div>
+
+            </div>
+
         </div>
     )
 }

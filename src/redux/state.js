@@ -1,3 +1,4 @@
+import rerenderTree from "../render";
 
 let state = {
 
@@ -8,6 +9,7 @@ let state = {
             { id: 3, message: 'I learn React!', liked: 200 },
             { id: 4, message: 'This is works!', liked: 2000 }
         ],
+        currentText:'Type here',
     },
 
     dialogsPage: {
@@ -27,7 +29,7 @@ let state = {
             { id: 5, message: 'Artem message' },
             { id: 6, message: 'Vadim message' }
         ],
-      
+
     },
     friendsBar: {
         friends: [
@@ -37,5 +39,22 @@ let state = {
         ]
     }
 }
+
+export const addPost = () => {
+    let newMessage = {
+        id: 5,
+        message: state.profilePage.currentText,
+        liked: 0,
+    }
+    state.profilePage.postData.push(newMessage);
+    state.profilePage.currentText = null;
+    rerenderTree(state);
+}
+
+export const updatePostMessage = (postMessage) => {
+    state.profilePage.currentText = postMessage;
+    rerenderTree(state);
+}
+
 
 export default state;

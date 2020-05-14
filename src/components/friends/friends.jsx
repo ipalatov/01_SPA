@@ -1,16 +1,7 @@
 import React from 'react';
 import s from './friends.module.css';
+import FriendItem from './friendItem/friendItem';
 
-const FriendItem = (props) => {
-    return (
-        <div className={s.friends_block__friend}>
-            <img src={props.img} alt={props.name}></img>
-            <div>
-                {props.name}
-            </div>
-        </div>
-    )
-}
 
 const Friends = (props) => {
     const friendElemets = props.friends.map(item => <FriendItem img={item.img} name={item.name} />);
