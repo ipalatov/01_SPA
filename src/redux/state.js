@@ -1,7 +1,6 @@
-
-const ADD_POST = 'ADD-POST';
-const UPDATE_POST_MESSAGE = 'UDATE-POST-MESSAGE';
-
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
+import friendsBarReducer from "./friendsBarReducer";
 
 let store = {
     _state: {
@@ -31,6 +30,7 @@ let store = {
                 { id: 5, message: 'Artem message' },
                 { id: 6, message: 'Vadim message' }
             ],
+            currentMessageText: 'Type...',
 
         },
         friendsBar: {
@@ -68,37 +68,15 @@ let store = {
     //     this._callSubscriber(this._state);
     // },
 
-    dispatch(action) { // type: 'ADD-POST'
-        if (action.type === ADD_POST) {
-            let newMessage = {
-                id: 5,
-                message: this._state.profilePage.currentText,
-                liked: 0,
-            }
-            this._state.profilePage.postData.push(newMessage);
-            this._state.profilePage.currentText = null;
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_POST_MESSAGE) {
-            this._state.profilePage.currentText = action.postMessage;
-            this._callSubscriber(this._state);
-        }
+    dispatch(action) { 
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.friendsBar = friendsBarReducer(this._state.friendsBar, action);
+        this._callSubscriber(this._state);
 
     }
 
 }
-
-
-
-let addPostActionCreator = () => ({ type: ADD_POST })
-
-
-let updatePostMessageActionCreator = (text) => ({
-    type: UPDATE_POST_MESSAGE,
-    postMessage: text
-}
-)
-
-export { addPostActionCreator, updatePostMessageActionCreator };
 
 
 export default store;
