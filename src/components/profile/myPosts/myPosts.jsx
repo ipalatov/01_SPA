@@ -12,13 +12,14 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     const addPost = () => {
-        props.addPost();
+        props.dispatch({ type: 'ADD-POST' });
         newPostElement.current.value = null;
     }
 
     const updatePostMessage = () => {
         let text = newPostElement.current.value;
-        props.updatePostMessage(text);
+        let action = { type: 'UDATE-POST-MESSAGE', postMessage: text };
+        props.dispatch(action);
     }
 
     return (
@@ -34,7 +35,7 @@ const MyPosts = (props) => {
                 <div><button
                     className={s.newPost__button}
                     onClick={addPost}
-                    >Add post</button>
+                >Add post</button>
                 </div>
             </div>
             <div className={s.posts}>

@@ -4,27 +4,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import state, { addPost, updatePostMessage, subscribe } from './redux/state';
+import store from './redux/state';
 
 
 let rerenderTree = (state) => {
+	
 	ReactDOM.render(
 		<React.StrictMode>
 			<App
 				state={state}
-				addPost={addPost}
-				updatePostMessage={updatePostMessage}
+				dispatch={store.dispatch.bind(store)}
 			/>
 		</React.StrictMode>,
 		document.getElementById('root')
 	);
 
-}
+};
 
-rerenderTree(state);
+rerenderTree(store.getState());
 
-subscribe (rerenderTree);
-
+store.subscribe(rerenderTree);
 
 
 // If you want your app to work offline and load faster, you can change
