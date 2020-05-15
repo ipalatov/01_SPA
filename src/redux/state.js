@@ -1,3 +1,8 @@
+
+const ADD_POST = 'ADD-POST';
+const UPDATE_POST_MESSAGE = 'UDATE-POST-MESSAGE';
+
+
 let store = {
     _state: {
         profilePage: {
@@ -64,7 +69,7 @@ let store = {
     // },
 
     dispatch(action) { // type: 'ADD-POST'
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let newMessage = {
                 id: 5,
                 message: this._state.profilePage.currentText,
@@ -73,7 +78,7 @@ let store = {
             this._state.profilePage.postData.push(newMessage);
             this._state.profilePage.currentText = null;
             this._callSubscriber(this._state);
-        } else if (action.type === 'UDATE-POST-MESSAGE') {
+        } else if (action.type === UPDATE_POST_MESSAGE) {
             this._state.profilePage.currentText = action.postMessage;
             this._callSubscriber(this._state);
         }
@@ -81,6 +86,20 @@ let store = {
     }
 
 }
+
+
+
+let addPostActionCreator = () => ({ type: ADD_POST })
+
+
+let updatePostMessageActionCreator = (text) => ({
+    type: UPDATE_POST_MESSAGE,
+    postMessage: text
+}
+)
+
+export { addPostActionCreator, updatePostMessageActionCreator };
+
 
 export default store;
 
