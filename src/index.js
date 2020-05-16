@@ -5,18 +5,15 @@ import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './redux/redux-store';
+import { Provider } from './storeContext';
 
 
-let rerenderTree = (state) => {
-	
+let rerenderTree = () => {
+
 	ReactDOM.render(
-		<React.StrictMode>
-			<App
-				store={store}
-				state={state}
-				dispatch={store.dispatch.bind(store)}
-			/>
-		</React.StrictMode>,
+		<Provider store={store}>
+			<App/>
+		</Provider>,
 		document.getElementById('root')
 	);
 
