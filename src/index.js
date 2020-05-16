@@ -5,26 +5,18 @@ import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './redux/redux-store';
-import { Provider } from './storeContext';
+import { Provider } from 'react-redux';
 
 
-let rerenderTree = () => {
 
-	ReactDOM.render(
-		<Provider store={store}>
-			<App/>
-		</Provider>,
-		document.getElementById('root')
-	);
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById('root')
+);
 
-};
 
-rerenderTree(store.getState());
-
-store.subscribe(() => {
-	let state = store.getState();
-	rerenderTree(state);
-});
 
 
 // If you want your app to work offline and load faster, you can change
