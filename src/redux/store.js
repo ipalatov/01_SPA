@@ -52,22 +52,6 @@ let store = {
         this._callSubscriber = observer;
     },
 
-
-    // addPost() {
-    //     let newMessage = {
-    //         id: 5,
-    //         message: this._state.profilePage.currentText,
-    //         liked: 0,
-    //     }
-    //     this._state.profilePage.postData.push(newMessage);
-    //     this._state.profilePage.currentText = null;
-    //     this._callSubscriber(this._state);
-    // },
-    // updatePostMessage(postMessage) {
-    //     this._state.profilePage.currentText = postMessage;
-    //     this._callSubscriber(this._state);
-    // },
-
     dispatch(action) { 
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
@@ -81,4 +65,3 @@ let store = {
 
 export default store;
 
-// window.store = store;

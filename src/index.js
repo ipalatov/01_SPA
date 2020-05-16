@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import store from './redux/state';
+import store from './redux/redux-store';
 
 
 let rerenderTree = (state) => {
@@ -23,7 +23,10 @@ let rerenderTree = (state) => {
 
 rerenderTree(store.getState());
 
-store.subscribe(rerenderTree);
+store.subscribe(() => {
+	let state = store.getState();
+	rerenderTree(state);
+});
 
 
 // If you want your app to work offline and load faster, you can change

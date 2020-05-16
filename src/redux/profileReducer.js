@@ -2,7 +2,17 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_POST_MESSAGE = 'UDATE-POST-MESSAGE';
 
 
-const profileReducer = (state, action) => {
+let initialState = {
+    postData: [
+        { id: 1, message: 'Hello, World! How are you?', liked: 15 },
+        { id: 2, message: 'Its my first post!', liked: 20 },
+        { id: 3, message: 'I learn React!', liked: 200 },
+        { id: 4, message: 'This is works!', liked: 2000 }
+    ],
+    currentText: 'Type here',
+};
+
+const profileReducer = (state = initialState, action) => {
 
 
     switch (action.type) {
