@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_POST_MESSAGE = 'UDATE-POST-MESSAGE';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 
 let initialState = {
@@ -10,30 +11,33 @@ let initialState = {
         { id: 4, message: 'This is works!', liked: 2000 }
     ],
     currentText: 'Type here',
+    profile: null,
 };
 
 const profileReducer = (state = initialState, action) => {
 
-    let stateCopy;
 
     switch (action.type) {
         case UPDATE_POST_MESSAGE:
-            stateCopy = { ...state, currentText: action.postMessage };
-            return stateCopy;
+            return { ...state, currentText: action.postMessage };
+
         case ADD_POST:
             let newMessage = {
                 id: 5,
                 message: state.currentText,
                 liked: 0,
             };
-            stateCopy = {
+            return {
                 ...state,
-                postData:[...state.postData, newMessage],
+                postData: [...state.postData, newMessage],
                 currentText: ''
             };
-            return stateCopy;
-
-
+        case SET_USER_PROFILE: {
+            
+            return {
+                ...state,
+                profile: action.profile
+            };}
         default:
             return state;
     }
@@ -42,12 +46,9 @@ const profileReducer = (state = initialState, action) => {
 }
 
 
-export const addPostActionCreator = () => ({ type: ADD_POST })
+export const addPost = () => ({ type: ADD_POST })
+export const updatePostMessage = (text) => ({ type: UPDATE_POST_MESSAGE, postMessage: text })
+export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 
-export const updatePostMessageActionCreator = (text) => ({
-    type: UPDATE_POST_MESSAGE,
-    postMessage: text
-}
-)
 
 export default profileReducer;

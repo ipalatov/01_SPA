@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './users.module.css';
 import userPhoto from '../../../src/assets/images/user.png'
+import { NavLink } from 'react-router-dom';
 
 
 const Users = (props) => {
@@ -14,7 +15,7 @@ const Users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-    
+
     return (
 
         <div className={s.users_block}>
@@ -28,14 +29,19 @@ const Users = (props) => {
                 <div key={us.id} className={s.item}>
                     <span className={s.ib}>
                         <div className={s.icon}>
-                            <img src={us.photos.small ? us.photos.small : userPhoto} alt='icon' />
+                            <NavLink to={'/profile/' + us.id}>
+                                <img src={us.photos.small ? us.photos.small : userPhoto} alt='icon' />
+                            </NavLink>
                         </div>
                         <button onClick={() => onToggleFollowUser(us.id, us.followed)}> {us.followed ? 'Unfollow' : 'Follow'} </button>
                     </span>
                     <div className={s.inline}>
                         <span className={s.ns_cc}>
                             <span className={s.name_status}>
-                                <div className={s.name}> {us.name} </div>
+                                <NavLink to={'/profile/' + us.id}>
+                                    <div className={s.name}> {us.name} </div>
+                                </NavLink>
+
                                 <div>{us.status}</div>
                             </span>
                             <span className={s.locate}>

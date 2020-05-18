@@ -9,12 +9,12 @@ const MyPosts = (props) => {
     let postsElements = props.postData.map(item => <Post id={item.id} message={item.message} liked={item.liked} />);
 
     const onAddPost = () => {
-        props.AddPost();
+        props.addPost();
     }
 
     const onUpdatePostMessage = (e) => {
         let text = e.target.value;
-        props.UpdatePostMessage(text);
+        props.updatePostMessage(text);
     }
 
     return (

@@ -1,3 +1,75 @@
-.description_block {
+.profile_block {
     padding: 10px;
+    display: grid;
+    grid-template-areas:
+        'photo name contacts'
+        'photo about_me contacts'
+        'photo look_job contacts';
+    grid-template-rows: 10fr 10fr;
+    grid-template-columns: 250px 10fr 350px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.photo {
+    grid-area: photo;
+    border: 2px solid rgb(75, 75, 75);
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.photo img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 5px;
+
+}
+
+.name {
+    grid-area: name;
+    padding: 10px;
+    padding-left: 30px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(75, 75, 75);
+
+}
+
+.contacts {
+    grid-area: contacts;
+    border: 2px solid rgb(75, 75, 75);
+    border-radius: 5px;
+    padding: 10px;
+    color: rgb(75, 75, 75);
+    font-size: 1rem;
+    font-weight: 600;
+
+
+
+}
+
+.about_me {
+    grid-area: about_me;
+    padding: 10px;
+    padding-left: 30px;
+
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(75, 75, 75);
+    margin: auto 0;
+}
+
+.look_job {
+    grid-area: look_job;
+    padding: 10px;
+    padding-left: 30px;
+
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(75, 75, 75);
+    margin: auto 0;
+
+
 }

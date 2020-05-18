@@ -1,6 +1,13 @@
-import { addPostActionCreator, updatePostMessageActionCreator } from '../../../redux/profileReducer';
+import { addPost, updatePostMessage } from '../../../redux/profileReducer';
 import MyPosts from './myPosts';
 import { connect } from 'react-redux';
+
+
+
+
+
+
+
 
 const mstp = (state) => {
     return {
@@ -9,15 +16,7 @@ const mstp = (state) => {
     }
 }
 
-const mdtp = (dispatch) => {
-    return {
-        AddPost: () => {dispatch(addPostActionCreator())},
-        UpdatePostMessage: (text) => {dispatch(updatePostMessageActionCreator(text))}
-    }
-}
 
 
-const MyPostsContainer = connect(mstp, mdtp)(MyPosts);
-
-
+const MyPostsContainer = connect(mstp, {addPost, updatePostMessage})(MyPosts);
 export default MyPostsContainer;

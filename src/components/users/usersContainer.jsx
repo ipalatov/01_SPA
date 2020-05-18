@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { followAC, unfollowAC, setUsersAC, setCurrentPagesAC, setTotalUsersCountAC, toggleIsFetchingAC } from './../../redux/usersReducer';
+import { followUser, unFollowUser, setUsers, setCurrentPages, setTotalUsersCount, toggleIsFetching } from './../../redux/usersReducer';
 import * as axios from 'axios';
 import Users from './users';
 import Preloader from '../common/preloader/preloader';
@@ -64,15 +64,6 @@ const mapStateToProps = (state) => {
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        followUser: (userId) => { dispatch(followAC(userId)) },
-        unFollowUser: (userId) => { dispatch(unfollowAC(userId)) },
-        setUsers: (users) => { dispatch(setUsersAC(users)) },
-        setCurrentPages: (pageNumber) => { dispatch(setCurrentPagesAC(pageNumber)) },
-        setTotalUsersCount: (TotalUsersCount) => { dispatch(setTotalUsersCountAC(TotalUsersCount)) },
-        toggleIsFetching: (isFetching) => { dispatch(toggleIsFetchingAC(isFetching)) },
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+    followUser, unFollowUser, setUsers, setCurrentPages, setTotalUsersCount, toggleIsFetching
+})(UsersContainer);
