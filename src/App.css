@@ -17,6 +17,7 @@
 
 .app_wrapper__content img {
 	display: block;
-	width: 50%;
+  max-width: 50%;
+  max-height: 200px;
 	margin: 0 auto;
 }

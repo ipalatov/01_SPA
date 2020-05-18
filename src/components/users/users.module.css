@@ -16,6 +16,13 @@
 
 }
 
+.users_block .pageBtn {
+    margin-bottom: 10px;
+}
+.selected {
+    font-weight: 900;
+}
+
 .users_block .item {
     display: inline-flex;
     background-color: #fff;
