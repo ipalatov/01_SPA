@@ -2,6 +2,7 @@ import React from 'react';
 import s from './profileInfo.module.css';
 import userPhoto from '../.././../assets/images/user.png'
 import Preloader from '../../common/preloader/preloader';
+import ProfileStatus from './profileStatus';
 
 
 const ProfileInfo = (props) => {
@@ -31,9 +32,9 @@ const ProfileInfo = (props) => {
                     <div>{props.profile.contacts.youtube}</div>
                     <div>{props.profile.contacts.github}</div>
                 </div>
-                <div className={s.about_me}>
-                    {props.profile.aboutMe}
-                </div>
+               
+               <ProfileStatus profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
+
                 <div className={s.look_job}>
                     <div>
                         Looking for a job description:
