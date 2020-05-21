@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { follow, unFollow, setCurrentPages, getUsers } from './../../redux/usersReducer';
+import { follow, unFollow, setCurrentPages, getUsers, toggleIsFollowingProgress } from './../../redux/usersReducer';
 import Users from './users';
 import Preloader from '../common/preloader/preloader';
 import { compose } from 'redux';
@@ -18,34 +18,27 @@ class UsersContainer extends React.Component {
     }
 
     render() {
-
-        return (
-            <>
-
-                {this.props.isFetching
-                    ? <Preloader />
-                    : <Users
-                        follow={this.props.follow}
-                        unFollow={this.props.unFollow}
-                        totalUserCount={this.props.totalUserCount}
-                        currenPage={this.props.currenPage}
-                        pageSize={this.props.pageSize}
-                        onPageChanged={this.onPageChanged}
-                        users={this.props.users}
-                        followingInProgress={this.props.followingInProgress}
-                        toggleIsFollowingProgress={this.props.toggleIsFollowingProgress}
-
-                    />}
-
-
-            </>
-
-        )
+        debugger;
+        return <>
+            {this.props.isFetching ? <Preloader /> : null}
+            <Users
+                totalUserCount={this.props.totalUserCount}
+                pageSize={this.props.pageSize}
+                currenPage={this.props.currenPage}
+                onPageChanged={this.onPageChanged}
+                users={this.props.users}
+                follow={this.props.follow}
+                unFollow={this.props.unFollow}
+                followingInProgress={this.props.followingInProgress}
+            />
+        </>
     }
 }
 
 
-const mapStateToProps = (state) => {
+let mapStateToProps = (state) => {
+    debugger;
+
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
@@ -57,7 +50,7 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-    connect(mapStateToProps, { follow, unFollow, setCurrentPages, getUsers }),
+    connect(mapStateToProps, { follow, unFollow, setCurrentPages, getUsers, toggleIsFollowingProgress }),
     withAuthRedirect
 )(UsersContainer);
 

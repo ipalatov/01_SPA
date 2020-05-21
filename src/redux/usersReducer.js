@@ -53,7 +53,7 @@ const usersReducer = (state = initialState, action) => {
         case TOGGLE_IS_FOLLOWING_IN_PROGRESS:
             return {
                 ...state,
-                followingInProgress: action.isFollowingProgress
+                followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId]
                     : state.followingInProgress.filter(id => id != action.userId)
             };
@@ -71,7 +71,7 @@ export const setUsers = (users) => ({ type: SET_USERS, users })
 export const setCurrentPages = (pageNumber) => ({ type: SET_CURRENT_PAGE, pageNumber })
 export const setTotalUsersCount = (totalUserCount) => ({ type: SET_TOTAL_USERS, totalUserCount })
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
-export const toggleIsFollowingProgress = (userId, isFollowingProgress) => ({ type: TOGGLE_IS_FOLLOWING_IN_PROGRESS, userId, isFollowingProgress })
+export const toggleIsFollowingProgress = (userId, isFetching) => ({ type: TOGGLE_IS_FOLLOWING_IN_PROGRESS, userId, isFetching })
 
 
 
@@ -99,8 +99,9 @@ export const follow = (userId) => {
                 if (response.data.resultCode === 0) {
                     dispatch(followUserSuccess(userId));
                 }
+                dispatch(toggleIsFollowingProgress(userId, false));
             })
-        dispatch(toggleIsFollowingProgress(userId, false));
+        
     }
 }
 
@@ -113,8 +114,9 @@ export const unFollow = (userId) => {
                 if (response.data.resultCode === 0) {
                     dispatch(unFollowUserSuccess(userId));
                 }
+                dispatch(toggleIsFollowingProgress(userId, false));
             })
-        dispatch(toggleIsFollowingProgress(userId, false));
+
     }
 }
 

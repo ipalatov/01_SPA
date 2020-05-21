@@ -4,7 +4,7 @@ import userPhoto from '../../../src/assets/images/user.png'
 import { NavLink } from 'react-router-dom';
 
 
-const Users = (props) => {
+let Users = (props) => {
 
 
 
@@ -13,7 +13,7 @@ const Users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-
+    debugger;
     return (
 
         <div className={s.users_block}>
