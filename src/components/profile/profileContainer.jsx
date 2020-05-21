@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 import { addPost, updatePostMessage, setUserProfile } from '../../redux/profileReducer';
 import { withRouter } from 'react-router-dom';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class ProfileContainer extends Component {
 
     componentDidMount() {
         let userId = this.props.match.params.userId ? this.props.match.params.userId : 8213;
         this.props.setUserProfile(userId);
-        
+
     }
 
 
@@ -24,7 +25,6 @@ class ProfileContainer extends Component {
 }
 
 
-let  AuthRedirectComponent = withAuthRedirect(ProfileContainer);
 
 const mapStateToProps = (state) => {
     return {
@@ -33,6 +33,11 @@ const mapStateToProps = (state) => {
 
 }
 
-let WithURLDATAContainerComponent = withRouter(AuthRedirectComponent);
 
-export default connect(mapStateToProps, { addPost, updatePostMessage, setUserProfile })(WithURLDATAContainerComponent);
+export default compose(
+    connect(mapStateToProps, { addPost, updatePostMessage, setUserProfile }),
+    withRouter,
+    withAuthRedirect
+)(ProfileContainer);
+
+
