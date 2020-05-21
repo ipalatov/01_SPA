@@ -1,5 +1,4 @@
 import * as axios from 'axios';
-import { followUser } from '../redux/usersReducer';
 
 
 const myAxios = axios.create({
@@ -21,6 +20,21 @@ export const usersAPI = {
 
     unFollowUser(id) {
         return myAxios.delete(`follow/${id}`)
-    }
+    },
 
+
+
+}
+
+export const authAPI = {
+    authMe() {
+        return myAxios.get('auth/me')
+    }
+}
+
+
+export const profileAPI = {
+    getProfile(userId) {
+        return myAxios.get(`profile/${userId}`)
+    }
 }

@@ -1,3 +1,5 @@
+import { profileAPI } from "../api/api";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_POST_MESSAGE = 'UDATE-POST-MESSAGE';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
@@ -33,11 +35,12 @@ const profileReducer = (state = initialState, action) => {
                 currentText: ''
             };
         case SET_USER_PROFILE: {
-            
+
             return {
                 ...state,
                 profile: action.profile
-            };}
+            };
+        }
         default:
             return state;
     }
@@ -48,7 +51,23 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPost = () => ({ type: ADD_POST })
 export const updatePostMessage = (text) => ({ type: UPDATE_POST_MESSAGE, postMessage: text })
-export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
+export const setUserProfileSuccess = (profile) => ({ type: SET_USER_PROFILE, profile })
+
+
+// thunk
+
+export const setUserProfile = (userId) => {
+    return (dispatch) => {
+        profileAPI.getProfile(userId)
+            .then(response => {
+                dispatch(setUserProfileSuccess(response.data));
+            })
+    }
+}
+
+
+
+
 
 
 export default profileReducer;

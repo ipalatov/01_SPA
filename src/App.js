@@ -9,6 +9,7 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import UsersContainer from './components/users/usersContainer';
 import ProfileContainer from './components/profile/profileContainer';
 import HeaderContainer from './components/header/headerContainer';
+import LoginPage from './components/login/login';
 
 
 
@@ -20,11 +21,13 @@ const App = () => {
 				<HeaderContainer />
 				<NavBar />
 				<div className='app_wrapper__content'>
+					<Route path='/login' render={() => <LoginPage />} />
+
 					<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
 					<Route path='/dialogs' render={() => <DialogsContainer />} />
 					<Route path='/news' render={() => <News />} />
 					<Route path='/music' render={() => <Music />} />
-					<Route path='/users' render={() => <UsersContainer /> } />
+					<Route path='/users' render={() => <UsersContainer />} />
 					<Route path='/settings' render={() => <Settings />} />
 
 				</div>
