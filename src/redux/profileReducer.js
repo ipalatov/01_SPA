@@ -13,7 +13,6 @@ let initialState = {
         { id: 3, message: 'I learn React!', liked: 200 },
         { id: 4, message: 'This is works!', liked: 2000 }
     ],
-    currentText: 'Type here',
     profile: null,
     status: '',
 };
@@ -22,19 +21,16 @@ const profileReducer = (state = initialState, action) => {
 
 
     switch (action.type) {
-        case UPDATE_POST_MESSAGE:
-            return { ...state, currentText: action.postMessage };
 
         case ADD_POST:
             let newMessage = {
                 id: 5,
-                message: state.currentText,
+                message: action.newPostBody,
                 liked: 0,
             };
             return {
                 ...state,
                 postData: [...state.postData, newMessage],
-                currentText: ''
             };
         case SET_USER_PROFILE: {
 
@@ -59,8 +55,7 @@ const profileReducer = (state = initialState, action) => {
 }
 
 
-export const addPost = () => ({ type: ADD_POST })
-export const updatePostMessage = (text) => ({ type: UPDATE_POST_MESSAGE, postMessage: text })
+export const addPost = (newPostBody) => ({ type: ADD_POST, newPostBody })
 export const setUserProfileSuccess = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const setUserStatusSuccess = (status) => ({ type: SET_USER_STATUS, status })
 

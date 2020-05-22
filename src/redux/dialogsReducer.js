@@ -1,5 +1,4 @@
 const SEND_MESSAGE = 'SEND_MESSAGE';
-const UPDATE_DIALOG_MESSAGE = 'UDATE-DIALOG-MESSAGE';
 
 let initialState = {
     dialogsData: [
@@ -18,35 +17,23 @@ let initialState = {
         { id: 5, message: 'Artem message' },
         { id: 6, message: 'Vadim message' }
     ],
-    currentMessageText: 'Type...',
 
 };
 
 const dialogsReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case UPDATE_DIALOG_MESSAGE:
-            return {
-                ...state,
-                currentMessageText: action.textMessage
-            };
         case SEND_MESSAGE:
             return {
                 ...state,
-                messagesData: [...state.messagesData, { id: 7, message: state.currentMessageText }],
-                currentMessageText: ''
+                messagesData: [...state.messagesData, { id: 7, message: action.messageBody }],
             };
         default:
             return state;
     }
 }
 
-export const updateDialogMessageActionCreator = (text) => ({
-    type: UPDATE_DIALOG_MESSAGE,
-    textMessage: text
-}
-)
 
-export const sendDialogMessageActionCreator = () => ({ type: SEND_MESSAGE })
+export const sendDialogMessageActionCreator = (messageBody) => ({ type: SEND_MESSAGE, messageBody })
 
 export default dialogsReducer;

@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './myPosts.module.css';
 import Post from './post/post'
+import NewPostForm from './newPost/newPostForm';
+import { reduxForm } from 'redux-form';
 
 
 
@@ -8,30 +10,20 @@ const MyPosts = (props) => {
 
     let postsElements = props.postData.map(item => <Post id={item.id} message={item.message} liked={item.liked} />);
 
-    const onAddPost = () => {
-        props.addPost();
+    const onAddPost = (formData) => {
+        props.addPost(formData.newPostBody);
     }
 
-    const onUpdatePostMessage = (e) => {
-        let text = e.target.value;
-        props.updatePostMessage(text);
-    }
+    const WithFormNewPostform = reduxForm({
+        form: 'addPost'
+    })(NewPostForm)
+    
+
 
     return (
         <div className={s.myPosts}>
             <h3>My posts:</h3>
-            <div className={s.newPost}>
-                <div><textarea
-                    placeholder='new post'
-                    value={props.currentText}
-                    onChange={onUpdatePostMessage} />
-                </div>
-                <div><button
-                    className={s.newPost__button}
-                    onClick={onAddPost}
-                >Add post</button>
-                </div>
-            </div>
+            <WithFormNewPostform onSubmit={onAddPost} />
             <div className={s.posts}>
                 {postsElements}
             </div>
