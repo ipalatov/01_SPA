@@ -14,6 +14,7 @@ const Dialogs = (props) => {
         .map(item => <Message message={item.message} id={item.id} />);
 
     const onAddMessage = (formData) => {
+        debugger
         props.SendMessage(formData.messageBody);
     }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import s from './myPosts.module.css';
 import Post from './post/post'
 import NewPostForm from './newPost/newPostForm';
-import { reduxForm } from 'redux-form';
+import { reduxForm, reset } from 'redux-form';
 
 
 
@@ -12,6 +12,7 @@ const MyPosts = (props) => {
 
     const onAddPost = (formData) => {
         props.addPost(formData.newPostBody);
+        reset()
     }
 
     const WithFormNewPostform = reduxForm({
