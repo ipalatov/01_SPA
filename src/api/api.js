@@ -29,6 +29,14 @@ export const usersAPI = {
 export const authAPI = {
     authMe() {
         return myAxios.get('auth/me')
+    },
+
+    login(email, password, rememberMe = false) {
+        return myAxios.post('auth/login', { email, password, rememberMe })
+    },
+
+    logout() {
+        return myAxios.delete('auth/login')
     }
 }
 
@@ -43,7 +51,7 @@ export const profileAPI = {
     },
 
     updateStatus(newStatus) {
-        return myAxios.put(`profile/status/`, {"status": newStatus})
+        return myAxios.put(`profile/status/`, { "status": newStatus })
     },
 
 

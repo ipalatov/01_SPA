@@ -18,7 +18,7 @@ const LoginForm = (props) => {
                     component={Input}
                     type="text"
                     placeholder={'login'}
-                    name="login"
+                    name="email"
                     validate={[requiredField, maxLengthCreator20]}
 
                 />
@@ -26,7 +26,7 @@ const LoginForm = (props) => {
             <div>
                 <Field
                     component={Input}
-                    type="text"
+                    type="password"
                     placeholder={'password'}
                     name="password"
                     validate={[requiredField, maxLengthCreator20]}

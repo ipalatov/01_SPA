@@ -25,3 +25,19 @@
   font-size: 1.5rem;
   font-weight: 600;
 }
+
+.login_block a:hover {
+  color: rgba(82, 207, 134, 0.5);
+  text-decoration: none;
+}
+
+.logout {
+  display: block;
+  font-size: 1rem;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.logout:hover {
+  color: rgba(82, 207, 134, 0.5);
+}
