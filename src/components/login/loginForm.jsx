@@ -1,7 +1,8 @@
 import React from 'react';
-import { Field } from 'redux-form';
+import { Field, stopSubmit } from 'redux-form';
 import { Input } from '../common/formsControls/formsControls';
 import { maxLengthCreator, requiredField } from '../../utils/validators/validators';
+import s from '../common/formsControls/formsControls.module.css'
 
 
 
@@ -39,8 +40,14 @@ const LoginForm = (props) => {
                     type={'checkbox'}
                     name="rememberMe"
                 /> RememberMe
-
             </div>
+
+            {props.error &&
+                <div className={s.formSummaryError}>
+                    {props.error}
+                </div>
+            }
+
             <div>
                 <button type="submit" >Login</button>
             </div>
