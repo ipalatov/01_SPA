@@ -1,20 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { follow, unFollow, setCurrentPages, getUsers, toggleIsFollowingProgress } from './../../redux/usersReducer';
+import { follow, unFollow, setCurrentPages, requestUsers, toggleIsFollowingProgress } from './../../redux/usersReducer';
 import Users from './users';
 import Preloader from '../common/preloader/preloader';
 import { compose } from 'redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { getUsers, getPageSize, getTotalUserCount, getCurrenPage, getIsFetching, getFollowingInProgress } from '../../redux/usersSelectors';
 
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getUsers(this.props.currenPage, this.props.pageSize)
+        this.props.requestUsers(this.props.currenPage, this.props.pageSize)
     }
 
     onPageChanged = (page) => {
-        this.props.getUsers(page, this.props.pageSize)
+        this.props.requestUsers(page, this.props.pageSize)
     }
 
     render() {
@@ -38,17 +39,17 @@ class UsersContainer extends React.Component {
 let mapStateToProps = (state) => {
 
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUserCount: state.usersPage.totalUserCount,
-        currenPage: state.usersPage.currenPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
+        users: getUsers(state),
+        pageSize: getPageSize (state),
+        totalUserCount: getTotalUserCount(state),
+        currenPage: getCurrenPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state)
     }
 };
 
 export default compose(
-    connect(mapStateToProps, { follow, unFollow, setCurrentPages, getUsers, toggleIsFollowingProgress }),
+    connect(mapStateToProps, { follow, unFollow, setCurrentPages, requestUsers, toggleIsFollowingProgress }),
     withAuthRedirect
 )(UsersContainer);
 
