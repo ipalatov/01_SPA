@@ -8,7 +8,6 @@ import { compose } from 'redux';
 class ProfileContainer extends Component {
 
     componentDidMount() {
-        debugger;
         let userId = this.props.match.params.userId ? this.props.match.params.userId : this.props.authorizedUserId;
         this.props.setUserProfile(userId);
         this.props.getUserStatus(userId);
