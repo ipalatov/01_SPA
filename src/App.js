@@ -5,15 +5,16 @@ import News from './components/news/news';
 import Music from './components/music/music';
 import Settings from './components/settings/settings';
 import DialogsContainer from './components/dialogs/dialogsContainer';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, BrowserRouter } from 'react-router-dom';
 import UsersContainer from './components/users/usersContainer';
 import ProfileContainer from './components/profile/profileContainer';
 import HeaderContainer from './components/header/headerContainer';
 import LoginPage from './components/login/login';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import { initializeAPP } from './redux/appReducer';
 import { compose } from 'redux';
 import Preloader from './components/common/preloader/preloader';
+import store from './redux/redux-store';
 
 
 
@@ -53,8 +54,22 @@ const mstp = (state) => ({
 	initialized: state.app.initialized,
 })
 
-
-export default compose(
+const AppContainer = compose(
 	withRouter,
 	connect(mstp, { initializeAPP }))
 	(App);
+
+
+
+const MainApp = (props) => {
+	return <BrowserRouter>
+		<Provider store={store}>
+			<AppContainer />
+		</Provider>
+	</BrowserRouter>
+
+}
+
+
+
+export default MainApp;
