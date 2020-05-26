@@ -5,7 +5,6 @@ import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { login } from '../../redux/authReducer';
 import { Redirect } from 'react-router-dom';
-import store from '../../redux/redux-store';
 
 
 const WithFormLoginform = reduxForm({

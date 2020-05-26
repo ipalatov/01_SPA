@@ -5,7 +5,7 @@ import News from './components/news/news';
 import Music from './components/music/music';
 import Settings from './components/settings/settings';
 import DialogsContainer from './components/dialogs/dialogsContainer';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import UsersContainer from './components/users/usersContainer';
 import ProfileContainer from './components/profile/profileContainer';
 import HeaderContainer from './components/header/headerContainer';
@@ -28,21 +28,19 @@ class App extends React.Component {
 		if (!this.props.initialized) { return <Preloader /> }
 
 		return (
-			<BrowserRouter>
-				<div className="app_wrapper">
-					<HeaderContainer />
-					<NavBar />
-					<div className='app_wrapper__content'>
-						<Route path='/login' render={() => <LoginPage />} />
-						<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-						<Route path='/dialogs' render={() => <DialogsContainer />} />
-						<Route path='/news' render={() => <News />} />
-						<Route path='/music' render={() => <Music />} />
-						<Route path='/users' render={() => <UsersContainer />} />
-						<Route path='/settings' render={() => <Settings />} />
-					</div>
+			<div className="app_wrapper">
+				<HeaderContainer />
+				<NavBar />
+				<div className='app_wrapper__content'>
+					<Route path='/login' render={() => <LoginPage />} />
+					<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+					<Route path='/dialogs' render={() => <DialogsContainer />} />
+					<Route path='/news' render={() => <News />} />
+					<Route path='/music' render={() => <Music />} />
+					<Route path='/users' render={() => <UsersContainer />} />
+					<Route path='/settings' render={() => <Settings />} />
 				</div>
-			</BrowserRouter>
+			</div>
 		)
 	}
 
@@ -56,5 +54,7 @@ const mstp = (state) => ({
 })
 
 
-export default compose(connect(mstp, { initializeAPP }))
+export default compose(
+	withRouter,
+	connect(mstp, { initializeAPP }))
 	(App);

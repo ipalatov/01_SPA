@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, stopSubmit } from 'redux-form';
+import { Field } from 'redux-form';
 import { Input } from '../common/formsControls/formsControls';
 import { maxLengthCreator, requiredField } from '../../utils/validators/validators';
 import s from '../common/formsControls/formsControls.module.css'
@@ -8,9 +8,7 @@ import s from '../common/formsControls/formsControls.module.css'
 
 let maxLengthCreator20 = maxLengthCreator(20);
 
-const LoginForm = (props) => {
-    const { handleSubmit } = props;
-
+const LoginForm = ({handleSubmit, error}) => {
     return (
         <form onSubmit={handleSubmit}>
 
@@ -42,9 +40,9 @@ const LoginForm = (props) => {
                 /> RememberMe
             </div>
 
-            {props.error &&
+            {error &&
                 <div className={s.formSummaryError}>
-                    {props.error}
+                    {error}
                 </div>
             }
 

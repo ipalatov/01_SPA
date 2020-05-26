@@ -35,7 +35,7 @@ const profileReducer = (state = initialState, action) => {
 
         case DELETE_POST:
             return {
-                ...state, 
+                ...state,
                 postData: state.postData.filter(p => p.id !== action.postId)
             }
         case SET_USER_PROFILE: {
@@ -70,37 +70,23 @@ export const setUserStatusSuccess = (status) => ({ type: SET_USER_STATUS, status
 
 // thunk
 
-export const setUserProfile = (userId) => {
-    return (dispatch) => {
-        profileAPI.getProfile(userId)
-            .then(response => {
-                dispatch(setUserProfileSuccess(response.data));
-            })
-    }
+export const setUserProfile = (userId) => async (dispatch) => {
+    let response = await profileAPI.getProfile(userId);
+    dispatch(setUserProfileSuccess(response.data));
 }
 
-export const getUserStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId)
-            .then(response => {
-                dispatch(setUserStatusSuccess(response.data));
-            })
-    }
+export const getUserStatus = (userId) => async (dispatch) => {
+    let response = await profileAPI.getStatus(userId);
+    dispatch(setUserStatusSuccess(response.data));
 }
 
 
-export const updateStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setUserStatusSuccess(status));
-                }
-            })
+export const updateStatus = (status) => async (dispatch) => {
+    let response = await profileAPI.updateStatus(status);
+    if (response.data.resultCode === 0) {
+        dispatch(setUserStatusSuccess(status));
     }
 }
-
-
 
 
 

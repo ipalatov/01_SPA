@@ -2,12 +2,11 @@ import React from 'react';
 import s from './profileInfo.module.css';
 import userPhoto from '../.././../assets/images/user.png'
 import Preloader from '../../common/preloader/preloader';
-import ProfileStatus from './profileStatus';
 import ProfileStatusWithHooks from './profileStatusWithHooks';
 
 
-const ProfileInfo = (props) => {
-    if (!props.profile) {
+const ProfileInfo = ({profile, status, updateStatus}) => {
+    if (!profile) {
         return <Preloader />
     }
 
@@ -18,30 +17,30 @@ const ProfileInfo = (props) => {
             </div>
             <div className={s.profile_block}>
                 <div className={s.photo}>
-                    <img src={props.profile.photos.large ? props.profile.photos.large : userPhoto} alt='profile' />
+                    <img src={profile.photos.large ? profile.photos.large : userPhoto} alt='profile' />
                 </div>
                 <div className={s.name}>
-                    {props.profile.fullName}
+                    {profile.fullName}
                 </div>
                 <div className={s.contacts}>
                     <div>Contacts:</div>
-                    <div>{props.profile.contacts.facebook}</div>
-                    <div>{props.profile.contacts.website}</div>
-                    <div>{props.profile.contacts.vk}</div>
-                    <div>{props.profile.contacts.twitter}</div>
-                    <div>{props.profile.contacts.instagram}</div>
-                    <div>{props.profile.contacts.youtube}</div>
-                    <div>{props.profile.contacts.github}</div>
+                    <div>{profile.contacts.facebook}</div>
+                    <div>{profile.contacts.website}</div>
+                    <div>{profile.contacts.vk}</div>
+                    <div>{profile.contacts.twitter}</div>
+                    <div>{profile.contacts.instagram}</div>
+                    <div>{profile.contacts.youtube}</div>
+                    <div>{profile.contacts.github}</div>
                 </div>
                
-               <ProfileStatusWithHooks profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
+               <ProfileStatusWithHooks profile={profile} status={status} updateStatus={updateStatus} />
 
                 <div className={s.look_job}>
                     <div>
                         Looking for a job description:
                     </div>
                     <div>
-                        {props.profile.lookingForAJobDescription}
+                        {profile.lookingForAJobDescription}
 
                     </div>
 
