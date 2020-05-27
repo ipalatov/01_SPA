@@ -54,6 +54,15 @@ export const profileAPI = {
         return myAxios.put(`profile/status/`, { "status": newStatus })
     },
 
+    savePhoto(file) {
+        const formData = new FormData();
+        formData.append("image", file);
+        return myAxios.put(`profile/photo/`, formData, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        })
+    },
 
 
 }

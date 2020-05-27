@@ -70,6 +70,8 @@
     font-weight: 500;
     color: rgb(75, 75, 75);
     margin: auto 0;
+}
 
-
+.inputPhoto {
+    font-size: 0.8rem;
 }

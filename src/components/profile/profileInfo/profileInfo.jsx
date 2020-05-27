@@ -5,9 +5,16 @@ import Preloader from '../../common/preloader/preloader';
 import ProfileStatusWithHooks from './profileStatusWithHooks';
 
 
-const ProfileInfo = ({profile, status, updateStatus}) => {
+const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
     if (!profile) {
         return <Preloader />
+    }
+
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            savePhoto(e.target.files[0]);
+        }
+
     }
 
     return (
@@ -21,6 +28,8 @@ const ProfileInfo = ({profile, status, updateStatus}) => {
                 </div>
                 <div className={s.name}>
                     {profile.fullName}
+                    <div className={s.inputPhoto}> {isOwner && <input type={'file'} onChange={onMainPhotoSelected} ></input>}</div>
+
                 </div>
                 <div className={s.contacts}>
                     <div>Contacts:</div>
@@ -32,8 +41,8 @@ const ProfileInfo = ({profile, status, updateStatus}) => {
                     <div>{profile.contacts.youtube}</div>
                     <div>{profile.contacts.github}</div>
                 </div>
-               
-               <ProfileStatusWithHooks profile={profile} status={status} updateStatus={updateStatus} />
+
+                <ProfileStatusWithHooks profile={profile} status={status} updateStatus={updateStatus} />
 
                 <div className={s.look_job}>
                     <div>
