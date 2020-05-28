@@ -8,7 +8,7 @@ import { reduxForm, reset } from 'redux-form';
 
 const MyPosts = (props) => {
 
-    let postsElements = props.postData.map(item => <Post id={item.id} message={item.message} liked={item.liked} />);
+    let postsElements = props.postData.map(item => <Post key={item.id} id={item.id} message={item.message} liked={item.liked} />);
 
     const onAddPost = (formData) => {
         props.addPost(formData.newPostBody);

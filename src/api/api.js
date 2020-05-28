@@ -64,5 +64,7 @@ export const profileAPI = {
         })
     },
 
-
+    saveProfile(profile) {
+        return myAxios.put(`profile`, profile)
+    },
 }

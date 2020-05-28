@@ -3,7 +3,7 @@ import s from './profile.module.css';
 import ProfileInfo from './profileInfo/profileInfo';
 import MyPostsContainer from './myPosts/myPostsContainer';
 
-const Profile = ({ isOwner, profile, status, updateStatus, savePhoto }) => {
+const Profile = ({ isOwner, profile, status, updateStatus, savePhoto, saveProfile }) => {
 
     return (
         <div>
@@ -11,7 +11,8 @@ const Profile = ({ isOwner, profile, status, updateStatus, savePhoto }) => {
                 profile={profile}
                 status={status}
                 updateStatus={updateStatus}
-                savePhoto={savePhoto} />
+                savePhoto={savePhoto}
+                saveProfile={saveProfile} />
             <MyPostsContainer />
         </div>
     )

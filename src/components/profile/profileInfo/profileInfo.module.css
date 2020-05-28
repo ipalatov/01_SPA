@@ -37,6 +37,14 @@
 
 }
 
+.name_input {
+    grid-area: name;
+
+    /* padding: 10px; */
+    margin-left: 30px;
+    font-size: 1rem;
+}
+
 .contacts {
     grid-area: contacts;
     border: 2px solid rgb(75, 75, 75);
@@ -74,4 +82,9 @@
 
 .inputPhoto {
     font-size: 0.8rem;
+}
+
+.editBtn {
+    text-align: center;
+    padding-top: 10px;
 }
