@@ -31,14 +31,22 @@ export const authAPI = {
         return myAxios.get('auth/me')
     },
 
-    login(email, password, rememberMe = false) {
-        return myAxios.post('auth/login', { email, password, rememberMe })
+    login(email, password, rememberMe = false, captcha = null) {
+        return myAxios.post('auth/login', { email, password, rememberMe, captcha })
     },
 
     logout() {
         return myAxios.delete('auth/login')
     }
 }
+
+export const securityAPI = {
+    getCaptchaURL() {
+        return myAxios.get('security/get-captcha-url')
+    },
+
+}
+
 
 
 export const profileAPI = {

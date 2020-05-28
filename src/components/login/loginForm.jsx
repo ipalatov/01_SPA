@@ -8,7 +8,7 @@ import s from '../common/formsControls/formsControls.module.css'
 
 let maxLengthCreator20 = maxLengthCreator(20);
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({ handleSubmit, error, captchaURL }) => {
     return (
         <form onSubmit={handleSubmit}>
 
@@ -29,7 +29,6 @@ const LoginForm = ({handleSubmit, error}) => {
                     placeholder={'password'}
                     name="password"
                     validate={[requiredField, maxLengthCreator20]}
-
                 />
             </div>
             <div>
@@ -39,6 +38,21 @@ const LoginForm = ({handleSubmit, error}) => {
                     name="rememberMe"
                 /> RememberMe
             </div>
+
+            {captchaURL
+                && <div>
+                    <img src={captchaURL} alt={'captchaURL'} ></img>
+                    <div>
+                        <Field
+                            component={Input}
+                            type="text"
+                            placeholder={'captcha'}
+                            name="captcha"
+                            validate={[requiredField]}
+                        />
+                    </div>
+                </div>
+            }
 
             {error &&
                 <div className={s.formSummaryError}>
